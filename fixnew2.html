@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+<body>
+
+<style>
+
+
+
+body{
+background-color:#373535;
+}
+#title{
+  text-align: center;
+}
+#discription{text-align: center;
+}
+
+#survey-form{
+   border-radius: 5px;
+  background-color: #373535;
+  padding: 10px 50px;
+
+ 
+}
+
+#survey-form2{
+   border-radius: 5px;
+  background-color: #373535;
+
+  
+}
+#survey-form3{
+   border-radius: 5px;
+  background-color: #373535
+  
+  
+}
+
+
+
+
+
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: center;
+  width: auto;
+    height:auto;
+  
+ 
+  margin: auto;}
+  
+  
+  
+  .col-252{
+  float: center;
+  width: 70%;
+   
+  
+  margin: auto;}
+  
+  .col-253{
+  float: center;
+  width: 70%;
+  margin: auto;}
+
+.l1{
+  
+  margin: auto;
+ float: center;
+  display: block;
+  padding: 10px;
+  text-align: center;
+
+  background-color:white;
+   color:black;
+  }
+  
+  
+  .lnew{
+   
+  margin: auto;
+ width:75%;
+  display: block;
+  padding: 10px;
+  text-align: center;
+   color:white;
+  background-color:#0099ff;
+  border: 1px solid white;
+  
+  }
+
+.l2{
+   width: 25%;
+  margin: auto;
+  padding: 10px;
+  display: block;
+  
+
+}
+
+
+
+#disp
+{
+text-align:left;
+font-size:15px;
+ color:#F8F8FF;
+ 
+	
+}
+#dispmid
+{
+text-align:center;
+}
+
+#dispmid2
+{
+text-align:center;
+}
+
+#disp3
+{
+
+text-align:left;
+font-size:15px;
+ 
+ color:#F8F8FF;  
+	
+}
+
+
+
+
+th, td {
+  padding: 55px;
+  text-align: center;
+}
+table#101 {
+  width: 300%;    
+  background-color: #f1f1c1;
+}
+
+ #link { color: #FF0000; } /* CSS link color */
+
+
+
+  
+</style>
+
+<script type="text/javascript">
+var data = new Array(); // creating array
+var data2=[];
+function add_element(){
+data.push(document.getElementById('t1').value); 
+data2.push(parseInt(document.getElementById('t2').value));// adding element to array
+document.getElementById('t1').value=''; 
+document.getElementById('t2').value='';
+
+
+disp();// Making the text box blank
+
+
+ // displaying the array elements
+}
+
+function remove_element(index_no){
+var t1=data.splice(index_no,1);
+var t2=data2.splice(index_no,1);
+disp(); // displaying the array elements
+}
+
+
+ 
+ function show_text(){
+ 
+ var strtext='';
+strtext=String(strtext);
+
+ strtext='Pay Details';
+ strtext=strtext.fontcolor("#D2691E");
+  strtext=strtext.fontsize("5");
+  strtext=strtext.bold()+"<br>";
+ document.getElementById('dispmid').innerHTML=strtext;
+
+}
+
+
+
+
+function disp(){
+
+show_text();
+
+var str='';
+str = 'You are with : '+ '<br>';
+for (i=0;i<data.length;i++) 
+{ 
+str += i + ':'+' '+data[i] + " <a  href=# onClick='remove_element("+data.indexOf(data[i])+")'>Remove </a> " + "<br >" ;  // adding each element with key number to variable
+  // adding each element with key number to variable
+} 
+document.getElementById('disp').innerHTML=str
+// Display the elements of the array
+
+
+var str2='';
+
+
+
+ 
+
+for (i=0;i<data2.length;i++) 
+{ 
+//data[i] = data[i].fontsize(7)
+data[i] = data[i].toUpperCase();
+
+str2 += data[i].bold()+'   ' +'has given'+' '+ ': '+String(data2[i]).bold()+' '+'Rs'.bold() +"  <a  href=# onClick='remove_element("+data.indexOf(data[i])+")'>Remove </a> " +"<br ><br>";  // adding each element with key number to variable
+ str2=str2.fontsize("4");
+ //"verdana";
+} 
+
+
+document.getElementById("disp").innerHTML=str2; // Display the elements of the array
+
+
+mean();
+
+}
+  
+function mean(){
+ thisTotal=0,thisAverage=0;
+ dataavg=[];
+ dataavg=data2;
+// add elements of array together
+ for(var i=0;i<dataavg.length;i++)
+  {thisTotal+=dataavg[i];}
+// calculate average
+ thisAverage=(thisTotal/dataavg.length);
+// display result
+
+
+lowhigh();
+
+
+
+ }
+ 
+ 
+
+
+function lowhigh(){
+low=[];
+high=[];
+ for( var i=0;i<data2.length;i++)
+ 
+ {
+ if(data2[i]<thisAverage){
+   low.push(i);
+  }
+ else{
+  high.push(i);
+ }}
+ low=low.map(Number);
+ high=high.map(Number);
+
+ }
+ 
+ function show_text2(){
+ 
+ var strtext2='';
+strtext2=String(strtext2);
+
+ strtext2='Splitting Details';
+ strtext2=strtext2.fontcolor("#D2691E");
+  strtext2=strtext2.fontsize("5");
+  strtext2=strtext2.bold()+"<br>";
+ document.getElementById('dispmid2').innerHTML=strtext2;
+
+}
+ 
+
+
+
+function finalone2(){
+
+show_text2();
+datanew=[];
+datanew=data2;
+len2=low.length-1;
+len3=high.length-1;
+fuckstring1=[];
+fuckstring2=[];
+x=0;
+y=0;
+pay1=[];
+pay2=[];
+var strnew2='';
+strnew2=String(strnew2);
+var strnew3='';
+strnew3=String(strnew3);
+
+while (datanew[low[x]]<thisAverage){
+pay1=0
+    
+    y=0;
+	
+    while (y<=len3){
+	pay2=0;
+	    pay1=thisAverage-datanew[low[x]];
+        pay2=datanew[high[y]]-thisAverage;
+		
+        if (Math.abs(pay1)>Math.abs(pay2)) {
+		pay2new=Math.abs(pay2);
+		pay2new=pay2new.toFixed(2);
+		pay2new=String(pay2new);
+		
+		if(pay2new>0){
+        strnew2 += data[low[x]].bold() +' '+'will give'+' '+pay2new.bold()+' '+'Rs'.bold()+' '+'to'+' '+data[high[y]].bold()+ "<br ><br>";
+		strnew2=strnew2.fontsize("3");
+		}
+		
+		else{
+		strnew3+=pay2new}
+
+                                                              //'(data[low[x]]+"will pay"+Math.abs(pay2)+"to"+data[high[y]])';
+		 
+         datanew[low[x]]=datanew[low[x]]+Math.abs(pay2);
+		 datanew[high[y]]=datanew[high[y]]-Math.abs(pay2);
+         y=y+1;}
+         
+        else{
+		pay1new=Math.abs(pay1);
+		pay1new=pay1new.toFixed(2);
+		pay1new=String(pay1new);
+		
+        strnew2 += data[low[x]].bold()+' '+'will return'+' '+pay1new.bold()+' '+'Rs'.bold()+' '+'to'+' '+data[high[y]].bold()+ "<br ><br>";
+         strnew2=strnew2.fontsize("4");
+         datanew[low[x]]=datanew[low[x]]+Math.abs(pay1);
+		 datanew[high[y]]=datanew[high[y]]-Math.abs(pay1);             
+         break;                                               //(data[low[x]],"will pay",Math.abs(pay2),"to",data[high[y]]);
+		 
+         }
+          }  
+    x=x+1;     
+}
+
+
+
+
+ 
+document.getElementById('disp3').innerHTML=strnew2;
+}
+
+
+
+ 
+ 
+ 
+
+
+
+</script>
+
+
+<form id="survey-form" class="col-25">
+   
+<h3 id="discription"><font face = "Times New Roman" size = "13" color="#D2691E"> Split it!</font> </h3>
+    <input class="l1" type="text" name="name"  id='t1' maxlength="65" size="35" placeholder="Name"></input>
+  <br><br>
+
+<input class="l1" type="text" name="price" id='t2' maxlength="65" size="35" placeholder="Price"></input>
+ 
+<br><br>
+<button  class='lnew' type="button" onclick='add_element()'>Add</button><br><br>
+<textarea class="l1" type="text" rows="4" cols="35" placeholder="note something">
+</textarea>
+<br><br>
+
+
+<button  class='lnew' type="button" onclick='finalone2()'  ;">Split Bill</button>
+
+ 
+<br><br>
+
+<div id=dispmid></div>
+<br>
+<div id=disp></div>
+	
+<br>
+
+<br>
+
+<br>
+
+
+
+
+</form>
+
+
+
+<form id="survey-form2" class="col-252">
+<div id=dispmid2></div>
+<br>
+<div id=disp3></div>
+
+</form>
+
+
+
+
+
+
+
+
+</body>
+</html>
