@@ -4,5 +4,5 @@ code -fixnew2.html ||
 how it works?
 watch video ||
 ppt-split it ppt ||
-picture ||
+screen shot - picture ||
 
